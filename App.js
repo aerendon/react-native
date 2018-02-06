@@ -1,14 +1,20 @@
 import React from 'react';
-import { Alert, StyleSheet, Text, View, Button } from 'react-native';
+import { Alert, StyleSheet, Text, View, Button, Image } from 'react-native';
 
 export default class App extends React.Component {
 
   render() {
+    const image = 'http://images.coveralia.com/audio/d/David_Bowie-Best_Of_Bowie_(Special_Edition)-Frontal.jpg'
+    const name = 'David Bowie'
+
     return (
       <View style={styles.container}>
-        <View style={[styles.box, styles.red]} />
-        <View style={[styles.box, styles.green]} />
-        <View style={[styles.box, styles.blue]} />
+        <View style={styles.artistBox}>
+          <Image style={styles.image} source={{ uri: image }} />
+          <View style={styles.info}>
+            <Text style={styles.name}>{name}</Text>
+          </View>
+        </View>
       </View>
     );
   }
@@ -17,23 +23,24 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    flexWrap: 'wrap',
+    backgroundColor: 'lightgray',
+    paddingTop: 50,
   },
-  box: {
+  artistBox: {
+    backgroundColor: 'white',
+    flexDirection: 'row'
+  },
+  image: {
     width: 150,
-    height: 200,
-    backgroundColor: 'black'
+    height: 150,
   },
-  red: {
-    backgroundColor: 'red'
-  },
-  green: {
+  info: {
     flex: 1,
-    backgroundColor: 'green'
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
-  blue: {
-    backgroundColor: 'blue'
+  name: {
+    fontSize: 20,
+    marginTop: 10,
   }
 });
