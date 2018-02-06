@@ -2,40 +2,13 @@ import React from 'react';
 import { Alert, StyleSheet, Text, View, Button } from 'react-native';
 
 export default class App extends React.Component {
-  onPress() {
-    Alert.alert(
-      'Alert Title',
-      'My Alert Msg', [{
-          text: 'Ask me later',
-          onPress: () => console.log('Ask me later pressed')
-        },
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel'
-        },
-        {
-          text: 'OK',
-          onPress: () => console.log('OK Pressed')
-        },
-      ], {
-        cancelable: false
-      }
-    )
-  }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to Platzi Music
-        </Text>
-        <Button
-          onPress={this.onPress}
-          title="Learn More"
-          color="#841584"
-          accesibilityLabel="Learn more about this purple button"
-        />
+        <View style={[styles.box, styles.red]} />
+        <View style={[styles.box, styles.green]} />
+        <View style={[styles.box, styles.blue]} />
       </View>
     );
   }
@@ -44,8 +17,22 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
+  box: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'black'
+  },
+  red: {
+    backgroundColor: 'red'
+  },
+  green: {
+    backgroundColor: 'green'
+  },
+  blue: {
+    backgroundColor: 'blue'
+  }
 });
