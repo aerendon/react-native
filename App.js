@@ -4,16 +4,20 @@ import { StyleSheet, View, ListView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import ArtistList from './src/ArtistList';
+import { getArtists } from './src/api-client';
 
 export default class App extends React.Component {
+  state = {
+    artists: []
+  }
+
+  componentDidMount() {
+    getArtists()
+      .then(data => this.setState({ artists: data }))
+  }
+
   render() {
-    const artist = {
-      image: 'http://images.coveralia.com/audio/d/David_Bowie-Best_Of_Bowie_(Special_Edition)-Frontal.jpg',
-      name: 'David Bowie',
-      likes: 200,
-      comments: 140,
-    }
-    const artists = Array(500).fill(artist);
+    const artists = this.state.artists
 
     return (
       <View style={styles.container}>
